@@ -33,7 +33,6 @@ class TestLogin(unittest.TestCase):
         with open('tests/data/invalidData.txt', 'r') as file:
             lines = file.readlines()
 
-            # 假设我们只需要第一组用户名和密码
         email = lines[0].strip()
         password = lines[1].strip()
 
@@ -521,24 +520,6 @@ class TestLogin(unittest.TestCase):
             # 输入code
             code_input.send_keys("100087")
 
-
-            # default_checkbox = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.XPATH, '//input[@ype="checkbox")]'))
-            # )
-
-            # 使用XPath定位类型为checkbox的<input>元素
-            # default_checkbox_locator = (By.XPATH, "//input[@type='checkbox']")
-
-            # 使用WebDriverWait等待元素可见
-            # default_checkbox = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//input[@type='checkbox']")))
-
-            # default_checkbox = (By.XPATH, '//*[@data-testid="CheckBoxOutlineBlankIcon"]')
-
-
-            # default_checkbox.click()
-
-            # default_checkbox.click()
-
             # 保存新建的address
             save_button = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, "//button[contains(@type, 'primary') and contains(text(), 'Save')]"))
@@ -653,8 +634,6 @@ class TestLogin(unittest.TestCase):
 
         
              
-
-
     @classmethod
     def tearDownClass(cls):
         time.sleep(10)

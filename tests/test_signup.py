@@ -33,7 +33,6 @@ class TestSignup(unittest.TestCase):
         with open('tests/data/invalidDataForSignup.txt', 'r') as file:
             lines = file.readlines()
 
-            # 假设我们只需要第一组用户名和密码
         firstName = lines[0].strip()
         lastName = lines[1].strip()
         email = lines[2].strip()
@@ -72,11 +71,6 @@ class TestSignup(unittest.TestCase):
            
             
             # 修改手机的所属区域为 +86
-
-            # 使用 WebDriverWait 等待元素变得可点击
-            # img_element = WebDriverWait(self.driver, 10).until(
-            #     EC.element_to_be_clickable((By.XPATH, "//img[@alt and contains(@class, 'jss99')]"))
-            # )
             img_element = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.CSS_SELECTOR, ".MuiInputAdornment-root.MuiInputAdornment-positionStart"))
             )
