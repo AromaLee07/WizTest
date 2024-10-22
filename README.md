@@ -2,10 +2,13 @@
 > This is the code for front-end automated testing, used to test https://www.wizmarketplace.com/
 
 
-## Installation
+## Frame
 
-Front-end: Python + Selenium + Unittest
-Back-end: Postman
+- Front-end: Python + Selenium + Unittest
+- Back-end: Postman
+
+
+## Installation
 
 Use Python Virtual Environment
 - python3 -m venv myenv
