@@ -4,6 +4,8 @@
 
 ## Installation
 
+Frames: Python + Selenium + Unittest
+
 Use Python Virtual Environment
 - python3 -m venv myenv
 - source myenv/bin/activate
@@ -23,7 +25,7 @@ Pip Install Package
 
 ## Features
 
-The business covered by the test includes:
+The business covered by the test cases includes:
 
 - Sign up / Login / Forgot password
 - User Profile / Change password
@@ -33,5 +35,7 @@ The business covered by the test includes:
 - Place order
 
 ## FAQ
+
+- 
 
 
