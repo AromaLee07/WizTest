@@ -4,15 +4,15 @@
 
 ## Installation
 
-- Use Python Virtual Environment
-python3 -m venv myenv
-source myenv/bin/activate
+Use Python Virtual Environment
+- python3 -m venv myenv
+- source myenv/bin/activate
 
-- Pip Install Package
-pip install selenium
-pip install webdriver-manager
-pip install pytest-html 
-pip install pytest
+Pip Install Package
+- pip install selenium
+- pip install webdriver-manager
+- pip install pytest-html 
+- pip install pytest
 
 
 ## Quick Start
