@@ -37,7 +37,7 @@ The business covered by the test cases includes:
 
 ## Test Cases and Test Reports
 - Test Cases: https://lvbjv6o2rsw.feishu.cn/docx/VAqodeWOwoS4PtxWWCnciFSpnIc?from=from_copylink
-- UI Test Report:
+- UI Test Report: WIZ_UI_TEST_REPORT.html (download it for a better reading)
 - API Test Report: WIZ_API_TEST_REPORT.jpeg
   
 
