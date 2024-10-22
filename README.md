@@ -34,8 +34,17 @@ The business covered by the test cases includes:
 - Add to cart
 - Place order
 
+
+## Test Cases and Test Reports
+- Test Cases: https://lvbjv6o2rsw.feishu.cn/docx/VAqodeWOwoS4PtxWWCnciFSpnIc?from=from_copylink
+- UI Test Report:
+- API Test Report: WIZ_API_TEST_REPORT.jpeg
+  
+
 ## FAQ
 
-- 
+- About testcases, I keep the columns for Steps/ExpectResult/ActualResult as blank for the tight schedule
+- I marked it as "automated" in testcases if this case has been automated
+- All the Chinese comments in this code was just for your convenience in reviewing
 
 
