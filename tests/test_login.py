@@ -4,8 +4,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager  # 自动管理 ChromeDriver
-
+from webdriver_manager.chrome import ChromeDriverManager  
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -38,75 +37,21 @@ class TestLogin(unittest.TestCase):
         email = lines[0].strip()
         password = lines[1].strip()
 
-        # 使用显式等待，直到 "SIGN UP NOW!" 元素可见
         try:
-
-            # 等待页面跳转并确认当前 URL
-            # WebDriverWait(self.driver, 10).until(
-            #     EC.url_changes("https://www.wizmarketplace.com/signup")
-            # )
-
-            # 检查当前 URL 是否为目标 URL
-            # self.assertIn("expected_url_part", self.driver.current_url, "未跳转到预期的 URL")
-
-             # 验证并点击 "Sign up with email" 按钮
            
-            # 使用 XPath 定位包含特定文本的元素
+            # 使用 XPath 定位 'Do not display again'框
             button = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, "//p[contains(text(), 'Do not display again')]"))
             )
     
-            # 点击元素
+            # 关闭'Do not display again' 框
             button.click()
 
-            # time.sleep(3)  # 等待 5 秒以确保页面加载
-             # 等待并找到按钮
-            # profile_button = WebDriverWait(self.driver, 10).until(
-            #     EC.element_to_be_clickable((By.XPATH, "//a[@href='/user/my-profile']"))  # 根据 href 查找链接
-            # )
-
-            # # # 点击按钮
-            # profile_button.click()
-            # 使用 XPath 定位 alt 属性为空的 <img> 元素
-            # 使用 WebDriverWait 等待 class 包含 'jss90' 的 <img> 元素变得可点击
-            # 使用 WebDriverWait 等待 href 属性以 "/aa/dd" 开头的 <a> 元素变得可见
-            # link_element = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.XPATH, "//a[starts-with(@href, '/user/my-profile')]"))
-            # )
-            link_element = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//a[starts-with(@href, '/user/my-profile')]"))
-)
-            print("2222:",link_element)
-            # 可以执行其他操作，例如获取 href 属性的值
-            href_value = link_element.get_attribute('href')
-
-            print("111111111",href_value)
-
-            # self.driver.execute_script("arguments[0].scrollIntoView(true);", link_element)
-
-            # self.driver.execute_script("arguments[0].click();", link_element)
-            # 直接使用 WebDriver 跳转到该 URL
+            # 进入登录界面
             self.driver.get("https://www.wizmarketplace.com/login")
-    
-            # 如果你想点击这个链接
-            # link_element.click()
 
 
-            # time.sleep(3)  # 等待 5 秒以确保页面加载
-
-
-            # email_button = WebDriverWait(self.driver, 3).until(
-            #     EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Sign up with email')]"))
-            # )
-            # print("000000000000",email_button.is_enabled())
-            # self.assertTrue(email_button.is_displayed(), "Sign up with email 按钮未显示")  # 验证按钮是否可见
-            # email_button.click()  # 点击按钮
-             # 使用 JavaScript 点击按钮
-            # self.driver.execute_script("arguments[0].click();", email_button)
-
-            # time.sleep(5)  # 等待 5 秒以确保页面加载
-
-            # # # 验证输入框是否存在
+            # 验证输入框是否存在
             email_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":r0:"))  # 根据 ID 查找输入框
             )
@@ -115,7 +60,7 @@ class TestLogin(unittest.TestCase):
             email_input.send_keys(email)
 
 
-            # # # 验证密码输入框是否存在
+            # 验证密码输入框是否存在
             password_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":r1:"))  # 根据 ID 查找输入框
             )
@@ -129,11 +74,10 @@ class TestLogin(unittest.TestCase):
                 EC.element_to_be_clickable((By.XPATH, "//button[text()='Log In']"))
             )
     
-            # 点击按钮
+            # 点击Login按钮
             login_button.click()
 
             time.sleep(3)
-
 
             # 使用 WebDriverWait 等待 "Invalid email" 文本变得可见
             invalid_email_element = WebDriverWait(self.driver, 10).until(
@@ -141,51 +85,26 @@ class TestLogin(unittest.TestCase):
             )
     
             # 断言 "Invalid email" 文本确实存在
-            assert "Invalid email" in invalid_email_element.text, "页面上不存在 'Invalid email' 元素"
+            assert "Invalid email" in invalid_email_element.text, "'Invalid email' not exist"
           
-
-
-            # myFavourites_element = WebDriverWait(self.driver, 10).until(
-            #     EC.element_to_be_clickable((By.XPATH, "//a[starts-with(@href, '/user/my-favourites')]"))
-            # )
-
-            # 点击my myFavourites_element
-            # myFavourites_element.click()
-
-            # self.driver.get(href_value)
-
-            # 使用 WebDriverWait 等待 <input> 元素变得可见
-            # email_element = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.ID, ":r3:"))
-            # )
-    
-            # 获取 <input> 元素的 value 属性
-            # email_value = email_element.get_attribute('value')
-    
-            # # 断言 value 属性是否为 "meng.li.aroma@gmail.com"
-            # assert email_value == "meng.li.aroma@gmail.com", "login failed"
-
-
-
         except Exception as e:
             self.fail(f"测试失败: {e}")
     
     def test_2_login_with_valid_data(self):
+
         # 模拟随机延迟
-        time.sleep(random.uniform(1, 3))  # 随机延迟 1 到 3 秒
+        time.sleep(random.uniform(1, 3))  
         self.driver.get("https://www.wizmarketplace.com/login")
 
         # 读取数据文件
         with open('tests/data/validData.txt', 'r') as file:
             lines = file.readlines()
 
-            # 假设我们只需要第一组用户名和密码
         email = lines[0].strip()
         password = lines[1].strip()
 
-        # 使用显式等待，直到 "SIGN UP NOW!" 元素可见
         try:
-            # # # 验证输入框是否存在
+            # 验证输入框是否存在
             email_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":r0:"))  # 根据 ID 查找输入框
             )
@@ -194,7 +113,7 @@ class TestLogin(unittest.TestCase):
             email_input.send_keys(email)
 
 
-            # # # 验证密码输入框是否存在
+            # 验证密码输入框是否存在
             password_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":r1:"))  # 根据 ID 查找输入框
             )
@@ -208,17 +127,16 @@ class TestLogin(unittest.TestCase):
                 EC.element_to_be_clickable((By.XPATH, "//button[text()='Log In']"))
             )
     
-            # 点击按钮
+            # 点击Login按钮
             login_button.click()
 
             time.sleep(5)
 
             # 获取所有cookie
             cookies = self.driver.get_cookies()
-            print("cookies after login is:",cookies)
+            # print("cookies after login is:",cookies)
 
             # 遍历cookie列表以查找token
-            # 打印所有cookie信息
             token = None
             for cookie in cookies:
                 if cookie['name'] == 'token':  # 假设token存储在名为'access_token'的cookie中
@@ -227,10 +145,12 @@ class TestLogin(unittest.TestCase):
                     break
 
             # 打印获取到的token
-            print("Token:", token)
+            # print("Token:", token)
 
-            # 断言token不为None
+            # 断言登录后就会有 token
             assert token is not None, "Token is None"
+
+            time.sleep(3)
 
             return token
 
@@ -240,7 +160,9 @@ class TestLogin(unittest.TestCase):
 
     def test_7_profile_change_password(self):
         # 模拟随机延迟
-        time.sleep(random.uniform(1, 3))  # 随机延迟 1 到 3 秒
+        time.sleep(random.uniform(1, 3))  
+
+        # 进入profile修改password
         self.driver.get("https://www.wizmarketplace.com/user/my-profile")
 
         # 读取数据文件
@@ -255,7 +177,7 @@ class TestLogin(unittest.TestCase):
             changePassword_link = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, "//p[text()='Change password']"))
             )
-            assert changePassword_link is not None, "找不到 Change password 链接"
+            assert changePassword_link is not None, "Change password not exist"
 
             changePassword_link.click()
 
@@ -272,7 +194,7 @@ class TestLogin(unittest.TestCase):
             )
         
             # 断言元素存在
-            assert new_password_input is not None, "新密码输入框不存在"
+            assert new_password_input is not None, "new password does not exist"
 
             new_password_input.send_keys("Test123456")
 
@@ -292,7 +214,7 @@ class TestLogin(unittest.TestCase):
 
             time.sleep(1)
 
-            # 使用 WebDriverWait 等待元素变得可见
+            # 修改password成功后会有tip
             success_message = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.ID, "notistack-snackbar"))
             )
@@ -301,8 +223,8 @@ class TestLogin(unittest.TestCase):
             message_text = success_message.text.strip()
 
             # 断言元素存在，并且文案是 "Password has been updated successfully"
-            assert success_message is not None, "成功提示元素不存在"
-            assert message_text == "Password has been updated successfully", "成功提示文案不符合预期"
+            assert success_message is not None, "tips not exist"
+            assert message_text == "Password has been updated successfully", "tips text wrong"
         
         
         except Exception as e:
@@ -310,25 +232,10 @@ class TestLogin(unittest.TestCase):
 
     def test_8_login_with_new_password(self):
 
-         # 模拟随机延迟
-        # 刷新当前页面
-        time.sleep(10)     
+       
+        time.sleep(5)     
 
-        # logout_link = WebDriverWait(self.driver, 10).until(
-        #     EC.presence_of_element_located((By.XPATH, "//p[text()='Log out']"))  # 根据 ID 查找输入框
-        # )
-
-        # logout_link = WebDriverWait(self.driver, 10).until(
-        #     EC.element_to_be_clickable((By.XPATH, "//p[text()='Log out']"))
-        # )
-
-        # print("logout_link is: ",logout_link)
-
-
-
-        # logout_link.click()
-
-        # 使用 WebDriverWait 等待 "Log out" 文本变得可见
+        # Logout
         logout_element = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//p[contains(text(), 'Log out')]"))
         )
@@ -336,14 +243,21 @@ class TestLogin(unittest.TestCase):
         # 点击 "Log out" 元素
         logout_element.click()
 
+        time.sleep(5) 
 
         logout_page = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//p[text()='You’re now logged out!']"))  # 根据 ID 查找输入框
+            EC.presence_of_element_located((By.XPATH, "//p[contains(text(),'You’re now logged out')]"))  # 根据 ID 查找输入框
         )
 
+        # 断言 logout 成功
+        assert logout_page is not None, ' logout fail'
+
+    
         
         # 模拟随机延迟
         time.sleep(random.uniform(1, 3))  # 随机延迟 1 到 3 秒
+
+        # 再次登录，change password back
         self.driver.get("https://www.wizmarketplace.com/login")
 
         # 读取数据文件
@@ -354,9 +268,8 @@ class TestLogin(unittest.TestCase):
         email = lines[0].strip()
         password = "Test123456"
 
-        # 使用显式等待，直到 "SIGN UP NOW!" 元素可见
         try:
-            # # # 验证输入框是否存在
+            # 验证输入框是否存在
             email_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":r0:"))  # 根据 ID 查找输入框
             )
@@ -385,20 +298,14 @@ class TestLogin(unittest.TestCase):
             time.sleep(5)
 
             # 获取所有cookie
-            cookies = self.driver.get_cookies()
-            # print("cookies after login is:",cookies)
-
-            # 遍历cookie列表以查找token
-            # 打印所有cookie信息
+            cookies = self.driver.get_cookies() 
+            
             token = None
             for cookie in cookies:
                 if cookie['name'] == 'token':  # 假设token存储在名为'access_token'的cookie中
                     token = cookie['value']
                     print("token in cookies is:",token)
                     break
-
-            # 打印获取到的token
-            # print("Token:", token)
 
             # 断言token不为None
             assert token is not None, "Token is None"
@@ -410,102 +317,76 @@ class TestLogin(unittest.TestCase):
             self.fail(f"测试失败: {e}")
 
     def test_3_filter_product_by_featured(self):
-        time.sleep(random.uniform(1, 3))  # 随机延迟 1 到 3 秒
-
+        
+        # 进入产品Sale页面
         self.driver.get("https://www.wizmarketplace.com/listing")
-        # time.sleep(random.uniform(3, 5))  # 随机延迟 1 到 3 秒
 
 
         try:
 
-
-            
+            # 点击 Featured 筛选产品
             featured_filter_button = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, "//button[contains(text(), 'Featured')]"))
             )
 
             featured_filter_button.click()
 
+            # 有时候筛选会不生效，再次刷新页面
             self.driver.refresh()
 
-            # 使用 WebDriverWait 等待含有特定 href 属性的元素变得可见
-            # target_element = WebDriverWait(self.driver, 10).until(
-            #     EC.element_to_be_clickable((By.XPATH, "//a[@href='/product/daisy-bean-bag-i.1679756265905917953']"))
-            # )
-
-            # element_xpath = "//a[@href='/product/daisy-bean-bag-i.1679756265905917953']"
-
-            # # 滚动到元素可见
-            # self.driver.execute_script("arguments[0].scrollIntoView(true);", self.driver.find_element(By.XPATH, element_xpath))
-
-            # # 等待元素可见
-            # target_element = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.XPATH, element_xpath))
-            # )
-
+            # 找到属于 Featured的唯一产品
             element_xpath = "//a[contains(@href, '1679756265905917953')]"
 
-            # 滚动到页面底部，以便加载可能处于视图之外的元素
+            # 滚动到页面底部，是产品可见
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-            # 等待元素可见
             product_link = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, element_xpath))
             )
 
-            print("target_element is:",product_link)
+            # print("target_element is:",product_link)
 
-            assert product_link is not None, "找不到featured的产品"
+            assert product_link is not None, "no featured products"
     
-            # 点击该元素
+            # 进入产品详情页
             product_link.click()
 
+            # 为产品选一个 color: Beige
+            style_attribute = "background-color: rgb(239, 223, 202); border: 0.5px solid transparent;"
+            locator = (By.XPATH, f"//div[contains(@style, '{style_attribute}')]")
+
+            element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
+            element.click()
+
+            # 定位 Add to cart 元素并点击
             add_to_cart_element = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Add to cart')]"))
             )
 
             assert add_to_cart_element is not None, "Add to cart button does not exist"
 
-            # color_element = WebDriverWait(self.driver, 10).until(
-            #     EC.element_to_be_clickable((By.XPATH, "//button[contains(@style, 'background-color: rgb(0, 188, 0);')]"))
-            # )
-
-            # element_with_style = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.XPATH, "//button[contains(@style, 'background-color: rgb(0, 188, 0)')]"))
-            # )
-
-            # 使用 WebDriverWait 等待第一个匹配的元素变得可见
-            # first_button = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.CSS_SELECTOR, ".MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium"))
-            # )
-            # 构建XPath表达式，匹配具有特定style属性的元素
-            style_attribute = "background-color: rgb(239, 223, 202); border: 0.5px solid transparent;"
-            locator = (By.XPATH, f"//div[contains(@style, '{style_attribute}')]")
-
-            # 使用WebDriverWait和EC.visibility_of_element_located来等待元素可见
-            element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
-            element.click()
-            
-
             add_to_cart_element.click()
 
             time.sleep(1)
 
+            # 验证Add to cart 成功后会有一个tip 
             successful_tip = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.ID, "notistack-snackbar"))
             )
             assert successful_tip is not None, "add to cart fail"
 
-            # 获取 error tips 元素的文本内容
+            # 断言该 tip 的文本内容是'Added to cart successfully'
             successful_text = successful_tip.text
             assert "Added to cart successfully" in successful_text, "add to cart fail"
+
 
         except Exception as e:
             self.fail(f"测试失败: {e}")
 
     def test_4_view_cart(self):
-        time.sleep(random.uniform(1, 3))  # 随机延迟 1 到 3 秒'
-        # self.driver.get("https://www.wizmarketplace.com/cart")
+
+        time.sleep(random.uniform(1, 3))  # 随机延迟 1 到 3 秒
+
         try:
             # 获取右上角的购物车图标
             view_cart_locator = (By.XPATH, '//*[@data-testid="ShoppingCartIcon"]')
@@ -515,7 +396,6 @@ class TestLogin(unittest.TestCase):
             view_cart_element.click()
 
 
-            time.sleep(3)
             # 点击View Cart按钮
             view_cart_button = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'View Cart')]"))
@@ -523,7 +403,14 @@ class TestLogin(unittest.TestCase):
 
             view_cart_button.click()
 
-            time.sleep(3)
+            time.sleep(5)
+
+
+            cart_item_element = WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, "//p[contains(text(), 'Cart Items')]")))
+
+            assert cart_item_element is not None, "not View Cart page"
+
 
             # 增加数量
             # add_icon_locator = '//*[@data-testid="AddIcon"]'
@@ -532,59 +419,50 @@ class TestLogin(unittest.TestCase):
             # self.driver.execute_script("arguments[0].scrollIntoView(true);", self.driver.find_element(By.XPATH, add_icon_locator))
 
             # 等待元素可见
-            # add_icon_element = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.XPATH, add_icon_locator))
-            # )
+            add_icon_element = WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, '//*[@data-testid="AddIcon"]'))
+            )
 
-            # assert add_icon_element is not None, "没能来到购物车页面"
-            # add_icon_element.click()
+            # 增加数量至 2
+            add_icon_element.click()
 
-            # time.sleep(3)
-
-
+            time.sleep(5)
 
             # 验证数量为2
-            quantity_locator = (By.XPATH, "//p[text()='1']")
+            quantity_locator = (By.XPATH, "//p[text()='2']")
             quantity_element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(quantity_locator))
 
-            assert quantity_element is not None, "个数不是2"
+            assert quantity_element is not None, 'quantity is not 2'
 
         except Exception as e:
             self.fail(f"测试失败: {e}")
 
+
     def test_5_checkout(self):
 
         time.sleep(random.uniform(1, 3))  # 随机延迟 1 到 3 秒
-        self.driver.get("https://www.wizmarketplace.com/cart")
+
+        # 还是在购物车页面
+        # self.driver.get("https://www.wizmarketplace.com/cart")
         
         try:
 
-            # time.sleep(20)
-            # 定义CSS选择器，匹配按钮文本
-            # checkout_locator = 
-
-            # 使用WebDriverWait等待元素可见并点击
-            # checkout_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(checkout_locator))
-            
-            time.sleep(3)
+            # 点击Checkout按钮
             checkout_button = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, '//button[@type="button"]'))
             )
 
             checkout_button.click()
 
-            # time.sleep(3)
-
-            # locator = (By.CSS_SELECTOR, "p:contains('Customer Information')")
-            
-            # assert locator is not None, "dfdf"
-
+           
+            # 断言Order页面存在 Customer Information字段
             customer_information_text = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, "//p[contains(text(), 'Customer Information')]"))
             )
 
-            assert customer_information_text is not None,"dfsfsdf"
+            assert customer_information_text is not None, 'Not order page'
 
+            # change delivery address
             change_delivery_address_button = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, "//button[contains(@type, 'primary') and contains(text(), 'Change')]"))
             )
@@ -593,11 +471,9 @@ class TestLogin(unittest.TestCase):
 
             time.sleep(3)
 
-            # add_new_address_element = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.XPATH, "//p[contains(text(), 'Add New Address')]"))
-            # )
+           
 
-            # 定位到元素的 XPath
+            # Add a New Address
             element_xpath = "//p[contains(text(), 'Add New Address')]"
 
             # 滚动到元素可见
@@ -610,7 +486,7 @@ class TestLogin(unittest.TestCase):
 
             add_new_address_element.click()
 
-            # # # 验证firstName是否存在
+            # 验证firstName是否存在
             Name_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":ro:"))  # 根据 ID 查找输入框
             )
@@ -619,30 +495,30 @@ class TestLogin(unittest.TestCase):
             Name_input.send_keys("Aroma1")
 
 
-            # # # 验证firstName是否存在
+            # 验证 phone是否存在
             phone_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":rp:"))  # 根据 ID 查找输入框
             )
 
-            # 输入firstName
+            # 输入phone
             phone_input.send_keys("00000000000")
 
 
-            # # # 验证firstName是否存在
+            # 验证streete是否存在
             street_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":rq:"))  # 根据 ID 查找输入框
             )
 
-            # 输入firstName
+            # 输入 street
             street_input.send_keys("my address")
 
 
-            # # # 验证firstName是否存在
+            # 验证code是否存在
             code_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, ":rr:"))  # 根据 ID 查找输入框
             )
 
-            # 输入firstName
+            # 输入code
             code_input.send_keys("100087")
 
 
@@ -663,7 +539,7 @@ class TestLogin(unittest.TestCase):
 
             # default_checkbox.click()
 
-
+            # 保存新建的address
             save_button = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, "//button[contains(@type, 'primary') and contains(text(), 'Save')]"))
             )
@@ -672,22 +548,15 @@ class TestLogin(unittest.TestCase):
 
             time.sleep(1)
 
+            # 断言保存成功后会有成功的tips
             successful_tip = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.ID, "notistack-snackbar"))
             )
             assert successful_tip is not None, "add to cart fail"
 
-            # 获取 error tips 元素的文本内容
+            # 断言tips 元素的文本内容为 'New delivery address added'
             successful_text = successful_tip.text
             assert "New delivery address added" in successful_text, "添加地址不成功"
-
-            # time.sleep(3)
-
-            # confirm_button = WebDriverWait(self.driver, 10).until(
-            #     EC.visibility_of_element_located((By.XPATH, "//button[contains(@type, 'primary') and contains(text(), 'Confirm')]"))
-            # )
-
-            # confirm_button.click()
 
 
         except Exception as e:
@@ -696,9 +565,12 @@ class TestLogin(unittest.TestCase):
     def test_6_clear_cart(self):
         # 模拟随机延迟
         time.sleep(random.uniform(1, 3))  # 随机延迟 1 到 3 秒
+
+        # 清除购物车
         self.driver.get("https://www.wizmarketplace.com/cart")
 
         try:
+
             delete_selected_element = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, "//p[contains(text(), 'Delete Selected')]"))
             )
@@ -708,7 +580,7 @@ class TestLogin(unittest.TestCase):
                 EC.visibility_of_element_located((By.XPATH, "//p[contains(text(), 'Your cart is empty.')]"))
             )
 
-            assert empty_text_element is not None, "购物车不为空"
+            assert empty_text_element is not None, "cart it not null"
             
         except Exception as e:
             self.fail(f"测试失败: {e}")
