@@ -4,7 +4,8 @@
 
 ## Installation
 
-Frames: Python + Selenium + Unittest
+Front-end: Python + Selenium + Unittest
+Back-end: Postman
 
 Use Python Virtual Environment
 - python3 -m venv myenv
